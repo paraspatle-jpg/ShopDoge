@@ -1,4 +1,5 @@
 import React from "react";
+import { Navbars } from "./components/navbar/Navbar"
 import Homepage from "./pages/homepage/Homepage";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
@@ -11,6 +12,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <Router>
+      <Navbars/>
       <Routes>
         <Route exact path="/" element={<Homepage />} />
         <Route exact path="/register" element={<Register />} />

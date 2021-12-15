@@ -4,7 +4,7 @@ import { Navbars } from "../../components/navbar/Navbar";
 const Cart = () => {
   return (
     <>
-      <Navbars />
+      <h1>Shopping Cart</h1>
     </>
   );
 };
