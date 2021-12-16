@@ -11,7 +11,7 @@ const Login = () => {
   })
 
   const handleChange = (e) => {
-    setdetails({ [e.target.name]: e.target, value })
+    setdetails({ [e.target.name]: e.target.value })
   }
 
 
