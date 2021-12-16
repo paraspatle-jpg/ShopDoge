@@ -7,7 +7,7 @@ export const Cards = (props) => {
             <Card>
                 <Card.Header>{props.title}</Card.Header>
                 <Card.Body>
-                    <img src={props.image}/>
+                    <img style={{width:"100px",height:"100px"}} src={props.image}/>
                     <Card.Title>{props.price}</Card.Title>
                     <Card.Text>
                         {props.description}
