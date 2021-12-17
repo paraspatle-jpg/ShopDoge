@@ -1,6 +1,6 @@
 const Cart = require('../models/Cart');
 
-module.exports.get_cart_items = async (req, res) => {
+module.exports.getCart = async (req, res) => {
     const userId = req.params.userId;
     try {
         let cart = await Cart.findOne({ userId });
@@ -13,11 +13,11 @@ module.exports.get_cart_items = async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        res.status(500).send("Something went wrong");
+        res.status(500).send("Something went wrong cannot connect to database");
     }
 }
 
-module.exports.add_cart_item = async (req, res) => {
+module.exports.addToCart = async (req, res) => {
     const userId = req.params.userId;
     const productId = req.params.product.id;
     const price = req.params.product.price;
@@ -50,6 +50,6 @@ module.exports.add_cart_item = async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        res.status(500).send("Something went wrong");
+        res.status(500).send("Something went wrong cannot connect to database");
     }
 }
