@@ -8,17 +8,15 @@ const CartSchema = new Schema({
     },
     items: [{
         productId: {
-            type: String,
+            type: Number,
             ref: "item"
         },
-        name: String,
         quantity: {
             type: Number,
             required: true,
             min: [1, 'Quantity can not be less then 1.'],
             deafult: 1
         },
-        price: Number
     }],
     bill: {
         type: Number,
