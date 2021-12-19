@@ -1,6 +1,7 @@
 import React from "react";
 
-const Register = () => {
+const Register = (props) => {
+
   return (
     <>
       <h1>Register</h1>

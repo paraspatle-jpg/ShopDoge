@@ -1,19 +1,24 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Container, Form, Button } from "react-bootstrap";
 
 
 
 const Login = () => {
-
   const [details, setdetails] = useState({
     email: "",
     password: ""
   })
-
   const handleChange = (e) => {
     setdetails({ [e.target.name]: e.target.value })
   }
-
+  const handleSubmit = (e) => {
+    const body = JSON.stringify(details)
+    axios.get("http://localhost:5000/api/login",body)
+    .then((response) => {
+      console.log(response)
+    })
+  }
 
   return (
     <>
