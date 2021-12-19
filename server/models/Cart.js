@@ -11,18 +11,14 @@ const CartSchema = new Schema({
             type: Number,
             ref: "item"
         },
+        //quantity functionality to be added later 
         quantity: {
             type: Number,
             required: true,
             min: [1, 'Quantity can not be less then 1.'],
             deafult: 1
         },
-    }],
-    bill: {
-        type: Number,
-        required: true,
-        default: 0
-    }
+    }]
 });
 
 module.exports = Cart = mongoose.model('cart',CartSchema);

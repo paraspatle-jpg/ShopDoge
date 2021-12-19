@@ -19,8 +19,8 @@ module.exports.getCart = async (req, res) => {
 
 module.exports.addToCart = async (req, res) => {
     const userId = req.params.userId;
-    const productId = req.params.product.id;
-    const price = req.params.product.price;
+    const productId = req.body.product.id;
+   // const price = req.body.product.price;
 
     try {
         let cart = await Cart.findOne({ userId });
@@ -28,22 +28,18 @@ module.exports.addToCart = async (req, res) => {
             let index = cart.items.findIndex(p => p.productId == productId);
             if(index > -1)
             {
-                let productItem = cart.items[index];
-                productItem.quantity += quantity;
-                cart.items[index] = productItem;
+                return res.status(403).send("Product already in the cart")
             }
             else {
-                cart.items.push({ productId, quantity});
+                cart.items.push({ productId});
             }
-            cart.bill += quantity*price;
             cart = await cart.save();
             return res.status(201).send(cart);
         }
         else{
             const newCart = await Cart.create({
                 userId,
-                items: [{ productId, quantity }],
-                bill: quantity*price
+                items: [{ productId }],
             });
             return res.status(201).send(newCart);
         }    
@@ -51,5 +47,24 @@ module.exports.addToCart = async (req, res) => {
     catch (err) {
         console.log(err);
         res.status(500).send("Something went wrong cannot connect to database");
+    }
+}
+
+module.exports.deleteFromCart= async (req, res) => {
+    const userId = req.params.userId
+    const productId = req.params.productId
+
+    try {
+        let cart = await Cart.findOne({ userId });
+        const index = cart.items.findIndex(p => p.productId == productId)
+        if (index > -1) {
+            cart.items.splice(index, 1)
+        }
+        cart = await cart.save()
+        res.status(201).send(cart)
+    }
+    catch(err){
+        console.log(err)
+        res.status(500).send("Something went wrong");
     }
 }
