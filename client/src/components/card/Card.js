@@ -1,7 +1,18 @@
-import React from 'react'
-import { Card, Button } from "react-bootstrap"
+import axios from 'axios';
+import React,{ useContext } from 'react';
+import { Card, Button } from "react-bootstrap";
+import { UserContext } from "../../contexts/context";
 
 export const Cards = (props) => {
+    const userDetails = useContext(UserContext);
+
+    const handleAddToCart = () => {
+        axios.post(`http://localhost:5000/api/cart/${userDetails.id}/${props.id}`)
+        .then((response) => {
+            
+        })
+    };
+
     return (
         <div>
             <Card>
@@ -17,5 +28,5 @@ export const Cards = (props) => {
                 </Card.Body>
             </Card>
         </div>
-    )
+    );
 }

@@ -1,10 +1,19 @@
 import React, { useContext } from "react";
-import { Container, Button } from "react-bootstrap"
+import axios from "axios";
+import { Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../contexts/context"
+import { UserContext } from "../../contexts/context";
 
 const Cart = () => {
-  const userDetails = useContext(UserContext)
+  const userDetails = useContext(UserContext);
+
+  const serverFetch=()=>{
+    axios.get(`https://localhost:5000/api/cart/${userDetails.userID}`)
+    .then((response)=>{
+
+    })
+  }
+
   return (
     <>
       <Container>
@@ -19,7 +28,9 @@ const Cart = () => {
               {
                 !userDetails.cart ?
                   <><h2>You have nothing in your cart.</h2></> :
-                  <></>
+                  <>
+                  
+                  </>
               }
             </>
         }

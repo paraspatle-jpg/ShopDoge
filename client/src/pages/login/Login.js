@@ -24,7 +24,7 @@ const Login = () => {
     <>
       <Container className="p-0" >
         <h1>Login</h1>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" name="email" placeholder="Enter email" onChange={handleChange} />
