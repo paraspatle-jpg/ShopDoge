@@ -12,7 +12,6 @@ export const Cart = () => {
                     <Card.Text>
                         {props.description}
                     </Card.Text>
-                    <Button variant="primary">Add To Cart</Button>
                     <Button variant="success" style={{marginLeft:"30px"}}>Buy Now</Button>
                 </Card.Body>
             </Card>
