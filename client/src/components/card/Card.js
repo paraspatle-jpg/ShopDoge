@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React,{ useContext } from 'react';
 import { Card, Button } from "react-bootstrap";
-import { UserContext } from "../../contexts/context";
+import { UserContext, UserDispatchContext} from "../../contexts/context";
 
 export const Cards = (props) => {
     const userDetails = useContext(UserContext);
+    const setUserdetails = useContext(UserDispatchContext);
 
     const handleAddToCart = () => {
         axios.post(`http://localhost:5000/api/cart/${userDetails.id}/${props.id}`)
@@ -23,7 +24,7 @@ export const Cards = (props) => {
                     <Card.Text>
                         {props.description}
                     </Card.Text>
-                    <Button variant="primary">Add To Cart</Button>
+                    <Button variant="primary" onClick={handleAddToCart}>Add To Cart</Button>
                     <Button variant="success" style={{marginLeft:"30px"}}>Buy Now</Button>
                 </Card.Body>
             </Card>

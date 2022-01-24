@@ -20,8 +20,6 @@ module.exports.getCart = async (req, res) => {
 module.exports.addToCart = async (req, res) => {
     const userId = req.params.userId;
     const productId = req.body.product.id;
-    const price = req.body.product.price;
-
     try {
         let cart = await Cart.findOne({ userId });
         if (cart) {

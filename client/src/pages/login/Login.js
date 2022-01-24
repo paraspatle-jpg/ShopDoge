@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import axios from "axios";
 import { Container, Form, Button } from "react-bootstrap";
+import { Navigate } from "react-router-dom";
 
 const Login = () => {
+  //for storing user info
+  const redirect = localStorage.getItem("userDetails");
   const [details, setdetails] = useState({
     email: "",
     password: ""
-  })
+  });
+
+  //taking user information
   const handleChange = (e) => {
     setdetails(prevState => ({
       ...prevState,
@@ -14,17 +19,23 @@ const Login = () => {
     }))
     console.log(details);
   }
-  
+
+  //logging in 
   const handleSubmit = () => {
-    console.log(details);
     const body = details;
     axios.post("http://localhost:5000/api/login", body)
       .then((response) => {
-        console.log(response.data)
+        console.log(response.data);
+        localStorage.setItem("userDetails", JSON.stringify(response.data));
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.response.data.msg);
       })
+  }
+
+  // if logged in redirect
+  if (redirect) {
+    return <Navigate to='/'/>;
   }
 
   return (
@@ -35,11 +46,7 @@ const Login = () => {
           <Form.Group className="mb-3" >
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" name="email" placeholder="Enter email" onChange={handleChange} />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
           </Form.Group>
-
           <Form.Group className="mb-3">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" name="password" placeholder="Password" onChange={handleChange} />

@@ -1,12 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { Container, Form, Button } from "react-bootstrap";
-import { UserContext, UserDispatchContext } from "../../contexts/context";
+import { Navigate } from "react-router-dom";
 
 const Register = (props) => {
   // for redirection
-
+  const redirect = localStorage.getItem("userDetails")
   // user details
   const [details, setdetails] = useState({
     name: "",
@@ -25,15 +24,17 @@ const Register = (props) => {
     console.log(details);
     const body = details;
     axios.post("http://localhost:5000/api/register", body)
-      .then((response) => {
-        console.log(response.data);
-        UserDispatchContext(true);
-      })
-      .catch((error) => {
+    .then((response) => {
+        localStorage.setItem("userDetails", JSON.stringify(response.data));
+    })
+    .catch((error) => {
         console.log(error);
-      })
+    })
   }
 
+  if (redirect) {
+    return <Navigate to='/'/>;
+  }
   return (
     <>
       <Container className="p-0" >

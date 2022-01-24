@@ -5,9 +5,9 @@ import { UserContext } from "../../contexts/context";
 
 export const Navbars = () => {
   const userDetails = useContext(UserContext);
+  const details = localStorage.getItem('userDetails');
   return (
     <div>
-      {console.log(userDetails)}
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container>
           <Navbar.Brand as={Link} to="/">
@@ -19,20 +19,23 @@ export const Navbars = () => {
               <Nav.Link as={Link} to="/">
                 Home
               </Nav.Link>
-              {!userDetails.is_loggedin?<>
-              <Nav.Link as={Link} to="/login">
-                Login
-              </Nav.Link>
-              <Nav.Link as={Link} to="/register">
-                Register
-              </Nav.Link>
-              </>:null}
               <Nav.Link as={Link} to="/products">
                 Products
               </Nav.Link>
               <Nav.Link as={Link} to="/cart">
                 Shopping Cart
               </Nav.Link>
+              {!details?<>
+              <Nav.Link as={Link} to="/logout">
+                Login
+              </Nav.Link>
+              <Nav.Link as={Link} to="/register">
+                Register
+              </Nav.Link>
+              </>:
+              <Nav.Link as={Link} to="/register">
+              Logout
+            </Nav.Link>}
             </Nav>
           </Navbar.Collapse>
         </Container>
