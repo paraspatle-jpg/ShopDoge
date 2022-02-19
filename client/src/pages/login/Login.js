@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useState} from "react";
 import axios from "axios";
 import { Container, Form, Button } from "react-bootstrap";
 import { Navigate } from "react-router-dom";
@@ -40,22 +40,7 @@ const Login = () => {
 
   return (
     <>
-      <Container className="p-0" >
-        <h1>Login</h1>
-        <Form>
-          <Form.Group className="mb-3" >
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" name="email" placeholder="Enter email" onChange={handleChange} />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" name="password" placeholder="Password" onChange={handleChange} />
-          </Form.Group>
-          <Button variant="primary" onClick={handleSubmit}>
-            Submit
-          </Button>
-        </Form>
-      </Container>
+     Login
     </>
   );
 };

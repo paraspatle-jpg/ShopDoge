@@ -14,12 +14,12 @@ app.use((req,res,next) => {
   next();
 })
 app.use(express.json());
-app.use("/api",authRoutes);
-app.use("/api",cartRoutes);
+app.use("/",authRoutes);
+app.use("/",cartRoutes);
 
 
 const dbURI = process.env.MONGO_CONNECT_URL;
-const port = process.env.PORT||5000;
+const port = process.env.PORT||3001;
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => app.listen(port, () => console.log(`Server running on http://localhost:${port}`)))
