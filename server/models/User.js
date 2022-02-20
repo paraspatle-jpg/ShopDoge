@@ -37,14 +37,16 @@ UserSchema.methods.generateAuthToken = async function(){
     user = this
     const token = await jwt.sign({_id:user._id},process.env.JWT_SECRET_TOKEN);
     user.tokens.push({token});
-    user.save();
-    return token;
+    await user.save();
+    return user;
 }
 
 UserSchema.pre('save',async function(next) {
     const rounds = 8;
-    const hash = await bcrypt.hash(this.password, rounds);
-    this.password = hash;
+    if(this.isModified('password')) {
+        const hash = await bcrypt.hash(this.password, rounds);
+        this.password = hash;
+    }
     next();
 })
 module.exports = User = mongoose.model('user',UserSchema);

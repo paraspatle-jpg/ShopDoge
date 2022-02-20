@@ -1,9 +1,18 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
+import "./Homepage.css" 
 
 const Homepage = () => {
+  const [styles,setStyles] = useState({})
+  const [stylesHero,setStylesHero] = useState({})
+  useEffect(() =>{
+    setStyles({borderTop: "80vh solid orange"})
+    setStylesHero({opacity: "1"})
+  },[]);
   return (
     <>
-      <h1>Homepage</h1>
+      <div className="orange-div" style={styles}></div>
+      <div className="hero-content" style={stylesHero}>
+      </div>
     </>
   );
 };

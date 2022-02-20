@@ -1,0 +1,15 @@
+.orange-div{
+    position: fixed;
+    borderTop: 80vh solid orange;
+    border-right:100vw solid transparent;
+    z-index: -9999;
+    transition: all 0.5s ease;
+}
+.hero-content{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    justify-content:space-evenly;
+    opacity: 0;
+    transition: all 0.5s ease;
+}

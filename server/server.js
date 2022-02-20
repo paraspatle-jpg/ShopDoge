@@ -14,8 +14,8 @@ app.use((req,res,next) => {
   next();
 })
 app.use(express.json());
-app.use("/",authRoutes);
-app.use("/",cartRoutes);
+app.use("/api",authRoutes);
+app.use("/api",cartRoutes);
 
 
 const dbURI = process.env.MONGO_CONNECT_URL;

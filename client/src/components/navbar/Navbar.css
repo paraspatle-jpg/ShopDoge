@@ -1,0 +1,53 @@
+.navbar {
+  display: flex;
+  align-items: center;
+}
+.navbar > h1 {
+  margin-left: 12px;
+  font-size: 28px;
+  padding: 8px;
+  padding-bottom: 0;
+}
+.navbar > ul {
+  display: flex;
+  list-style: none;
+}
+.navbar > ul > li {
+  margin-right: 12px;
+  padding: 8px;
+  padding-bottom: 0;
+}
+
+.navbar > h1 > p {
+  display: inline-block;
+  color: orange;
+}
+.navbar-links {
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  color: black;
+  font-size:20px;
+  transition: all 0.3s ease-out;
+}
+
+.navbar-links:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: orange;
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.navbar-links:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+.navbar-links:hover{
+    color: orange;
+}
