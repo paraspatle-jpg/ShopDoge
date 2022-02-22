@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar } from "./components/navbar/Navbar"
+import { Footer } from "./components/footer/Footer"
 import Homepage from "./pages/homepage/Homepage";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/products" element={<Products />} />
           <Route exact path="*" element={<PageNotFound />} />
         </Routes>
+        <Footer />
       </Router>
   );
 }

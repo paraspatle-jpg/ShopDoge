@@ -20,7 +20,35 @@
 
 .navbar > h1 > p {
   display: inline-block;
-  color: orange;
+  color: #ff7e29;
+}
+.nav-input{
+  width: 400px;
+  height: 35px;
+  padding: 12px;
+  font-size:20px;
+  padding-bottom:15px;
+  margin-top:-6px;
+  border:2px solid orange;
+  border-radius:30px;
+  transition: all 0.3s;
+}
+.nav-input:focus{
+  box-shadow: 0 0 0 99999px rgba(0, 0, 0, 0.7);
+  outline:2.5px solid orange;
+  transition: all 0.3s;
+}
+.search-results{
+  z-index: 99999;
+  background-color:white;
+  width: 40vw;
+  height:auto;
+  top:100;
+  margin-top:5px;
+  font-size:22px;
+  padding: var(--default-padding);
+  border-radius: var(--default-border-rad);
+  position:absolute;
 }
 .navbar-links {
   text-decoration: none;
