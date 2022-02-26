@@ -1,6 +1,7 @@
 .navbar {
   display: flex;
   align-items: center;
+  height: 78px;
 }
 .navbar > h1 {
   margin-left: 12px;
@@ -34,7 +35,7 @@
   transition: all 0.3s;
 }
 .nav-input:focus{
-  box-shadow: 0 0 0 99999px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 0 99999px rgba(0, 0, 0, 0.5);
   outline:2.5px solid orange;
   transition: all 0.3s;
 }

@@ -1,51 +1,52 @@
 const User = require("../models/User");
-const bcrypt = require("bcrypt");
 require("dotenv").config();
 
-module.exports.signup = (req, res) => {
+module.exports.signup = async (req, res) => {
+  try{
   const { name, email, password } = req.body;
+  const newUser = new User({ name, email, password });
+  console.log(newUser)
+  await newUser.save()
+  console.log('a')
+  const token = await newUser.generateAuthToken();
+  console.log(token)
+  res.status(200).send({user,token});
 
-  if (!name || !email || !password)
-    return res.status(401).json({ msg: "Please enter all required fields" });
-  User.findOne({ email })
-    .then(async (user) => {
-      if (user) return res.status(400).json({ msg: "User already exists" });
-      const newUser = new User({ name, email, password });
-      newUser
-        .generateAuthToken()
-        .then((newuser) => {
-          res.status(200).json(newuser);
-        })
-        .catch((error) => {
-          res.status(400).send(error.message);
-        });
-    })
-    .catch((error) => {
-      res.status(400).send(error.message);
-    });
+  }catch(err) {
+    console.log(err)
+    res.status(400).send({err: err});
+  }
 };
 
-module.exports.login = (req, res) => {
-  const { email, password } = req.body;
+module.exports.login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-  if (!email || !password)
-    return res.status(401).json({ msg: "Please enter all required fields" });
-  User.findOne({ email }).then(async (user) => {
-    if (!user) return res.status(400).json({ msg: "Login user failed" });
-    //comparing hash passwords
+    const user = await User.getCredentials(email, password);
     const token = await user.generateAuthToken();
-    bcrypt.compare("parasup", user.password).then((isvalid) => {
-      console.log(isvalid);
-      if (isvalid) {
-        return res.status(200).json({
-          user: {
-            id: user._id,
-            name: user.name,
-            email: user.email,
-          },
-          token: token,
-        });
-      } else return res.status(400).json({ msg: "Login failed" });
-    });
-  });
+    return res.status(200).json({ user, token });
+  } catch (err) {
+    res.status(400).json(err);
+  }
 };
+
+module.exports.logout = async (req,res) => {
+  try{
+    req.user.tokens = req.user.tokens.filter(token => token !== req.token);
+    await req.user.save();
+    
+    res.status(200).send({msg: 'User logged out'})
+  }catch(err){
+    res.status(400).send({msg: "Something went wrong"});
+  }
+};
+
+module.exports.deleteUser = async (req, res) => {
+  try{
+    await req.user.remove();
+    res.status(400).send({msg: "User deleted successfully"});
+  }catch(err){
+    res.status(400).send({msg: "Something went wrong"});
+  }
+  
+}

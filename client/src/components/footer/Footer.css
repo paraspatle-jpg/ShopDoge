@@ -1,0 +1,16 @@
+.footer-container {
+    background-color: var(--dark-bg);
+    color: var(--text-darg-bg);
+}
+.footer-flex-container {
+    display: flex;
+    justify-content:space-evenly;
+}
+.footer-flex-container>ul{
+    list-style:none;
+}
+
+.footer-container>h6{
+    text-align:center;
+    padding:var(--default-padding);
+}

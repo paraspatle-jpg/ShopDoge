@@ -1,8 +1,8 @@
 .orange-div{
     float: left;
     position: absolute;
-    borderTop: 120vh solid var(--light-bg);
-    border-right:100vw solid var(--dark-bg);
+    borderTop: 100vh solid var(--light-bg);
+    border-right:98.9vw solid var(--dark-bg);
     z-index: -9999;
     transition: all 0.5s ease;
 }
