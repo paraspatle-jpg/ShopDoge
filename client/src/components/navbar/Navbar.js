@@ -26,19 +26,30 @@ export const Navbar = () => {
   return (
     <div className="navbar">
       <h1>
-        Sh<p>o</p>pD<p>o</p>ge
+        Sh<p data-aos="fade-up">o</p>pD<p data-aos="fade-down">o</p>ge
       </h1>
-      <div className="navbar-input" onBlur={() => setHideResults({ display: "none" })}>
-        <input type="text" className="nav-input" value={searchKey} placeholder="Search" onChange={handleChange}/>
+      <div className="navbar-input">
+        <input
+          type="text"
+          className="nav-input"
+          value={searchKey}
+          placeholder="Search"
+          onChange={handleChange}
+        />
         <div
           className="search-results"
-          style={hideResults}>
+          onBlur={() => setHideResults({ display: "none" })}
+          style={hideResults}
+        >
           {dummyresults.map((dummy) => {
             if (dummy.search(searchKey) !== -1) {
               return (
                 <Link
                   to="/products"
-                  onClick={() => setHideResults({ display: "none" })}>
+                  onClick={() => {
+                    setSearchKey(dummy)
+                    setHideResults({ display: "none" });
+                  }}>
                   {dummy}
                   <br />
                 </Link>

@@ -1,0 +1,67 @@
+.orange-div-position{
+    float: left;
+    position: absolute;
+    width: 100%;
+    z-index: -9999;
+}
+.orange-div{
+    border-top: 80vh solid var(--light-bg);
+    border-right-color: var(--dark-bg);
+    border-right-style: solid;
+    border-right-width:98.9vw;
+}
+.hero-content{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    justify-content:space-evenly;
+    transition: all 0.5s ease;
+}
+.orange{
+    width: 40vw;
+    margin-left:100px;
+}
+.orange,.black{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+.black{
+    align-self: flex-end;
+    margin-right: 100px;
+}
+.orange>h2,.black>h2{
+    text-align: center;
+    font-size:25px;
+    width:31vw;
+    padding: var(--default-padding);
+}
+.black>h2{
+    color: orange;
+}
+.orange>h4{
+    font-size:17px;
+}
+.black>h4{
+    color: var(--text-darg-bg);
+    font-size:17px;
+}
+.hero-link{
+    font-size:20px;
+    text-decoration:none;
+    text-align: center;
+    width:160px;
+    height:auto;
+    background-color:var(--dark-bg);
+    padding: var(--default-padding);
+    padding-bottom:calc(var(--default-padding)+var(--default-padding)/2));
+    border-radius: 30px;
+    
+}
+.orange>.hero-link{
+    color: var(--text-darg-bg);
+}
+.black>.hero-link{
+    color:black;
+    background-color:orange;
+}

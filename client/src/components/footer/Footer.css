@@ -1,6 +1,7 @@
 .footer-container {
     background-color: var(--dark-bg);
     color: var(--text-darg-bg);
+    padding:calc(3*var(--default-padding));
 }
 .footer-flex-container {
     display: flex;
@@ -8,6 +9,7 @@
 }
 .footer-flex-container>ul{
     list-style:none;
+    padding:calc(3*var(--default-padding));
 }
 
 .footer-container>h6{
