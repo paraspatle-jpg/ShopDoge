@@ -3,15 +3,24 @@ import { Link } from "react-router-dom";
 import "./HeroContent.css";
 
 export const HeroContent = () => {
+  const [width, setWidth] = useState(window.innerWidth);
   const [styles, setStyles] = useState({});
+  const updateDimensions = () => {
+    console.log(width)
+    setWidth(window.innerWidth);
+  };
   useEffect(() => {
-    setStyles({ borderTop: "80vh solid orange"});
-  }, []);
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, [window.innerWidth]);
+  
+  useEffect(() => {
+    setStyles({ borderTop: "80vh solid orange",borderRight: `${width-18}px solid black`});
+  }, [width]);
+
   return (
     <div>
-      <div className="orange-div-position">
-        <div className="orange-div" style={styles}></div>
-      </div>
+      <div className="orange-div" style={styles}></div>
       <div className="hero-content">
         <div data-aos="fade-up" className="orange">
           <h2>Get the Best Deals on ShopDoge</h2>

@@ -1,93 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { SearchBar } from "../searchBar/SearchBar";
 import "./Navbar.css";
 
 export const Navbar = () => {
-  const [hideResults, setHideResults] = useState({ display: "none" });
-  const [searchKey, setSearchKey] = useState("");
-  const dummyresults = [
-    "paras",
-    "tanmayee",
-    "parul",
-    "tanmay",
-    "pallavi",
-    "hem",
-    "swapnil",
-  ];
-  const handleChange = (e) => {
-    setSearchKey(e.target.value);
-    if (e.target.value !== "") {
-      setHideResults({ display: "" });
-    } else {
-      setHideResults({ display: "none" });
-    }
-    console.log(e.target.value);
+  const [toggle, settoggle] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+  const updateDimensions = () => {
+    console.log(width)
+    setWidth(window.innerWidth);
   };
+  useEffect(() => {
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, [window.innerWidth]);
+
   return (
     <div className="navbar">
       <h1>
-        Sh<p data-aos="fade-up">o</p>pD<p data-aos="fade-down">o</p>ge
+        Sh<p>o</p>pD<p>o</p>ge
       </h1>
-      <div className="navbar-input">
-        <input
-          type="text"
-          className="nav-input"
-          value={searchKey}
-          placeholder="Search"
-          onChange={handleChange}
-        />
-        <div
-          className="search-results"
-          onBlur={() => setHideResults({ display: "none" })}
-          style={hideResults}
-        >
-          {dummyresults.map((dummy) => {
-            if (dummy.search(searchKey) !== -1) {
-              return (
-                <Link
-                  to="/products"
-                  onClick={() => {
-                    setSearchKey(dummy)
-                    setHideResults({ display: "none" });
-                  }}>
-                  {dummy}
-                  <br />
-                </Link>
-              );
-            } else {
-              return null;
-            }
-          })}
-        </div>
+      <SearchBar />
+      <div className="hidden-toggle">
+        <span onClick={() => settoggle(!toggle)}>Toggle Side Menu</span>
       </div>
-
-      <ul>
-        <li>
-          <Link to="/" className="navbar-links">
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link to="/products" className="navbar-links">
-            Products
-          </Link>
-        </li>
-        <li>
-          <Link to="/cart" className="navbar-links">
-            Shopping Cart
-          </Link>
-        </li>
-        <li>
-          <Link to="/login" className="navbar-links">
-            Login
-          </Link>
-        </li>
-        <li>
-          <Link to="/" className="navbar-links">
-            Signup
-          </Link>
-        </li>
-      </ul>
+      <div
+        className="side-nav"
+        style={!toggle && width <= 1116 ? { height:'0', opacity: "0" } : { height:'100%', opacity: "1" }}
+      >
+        <ul>
+          <h1>ShopDoge</h1>
+          <li>
+            <Link to="/" className="navbar-links">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/products" className="navbar-links">
+              Products
+            </Link>
+          </li>
+          <li>
+            <Link to="/cart" className="navbar-links">
+              Shopping Cart
+            </Link>
+          </li>
+          <li>
+            <Link to="/login" className="navbar-links">
+              Login
+            </Link>
+          </li>
+          <li>
+            <Link to="/register" className="navbar-links">
+              Signup
+            </Link>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

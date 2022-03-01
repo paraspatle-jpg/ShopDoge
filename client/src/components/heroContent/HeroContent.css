@@ -1,15 +1,20 @@
-.orange-div-position{
+
+.orange-div{
     float: left;
     position: absolute;
-    width: 100%;
+    border-top: 0 solid var(--light-bg);
+    border-right: 98.9vw solid var(--dark-bg);
     z-index: -9999;
+    transition: all 0.5s;
 }
-.orange-div{
-    border-top: 80vh solid var(--light-bg);
-    border-right-color: var(--dark-bg);
-    border-right-style: solid;
-    border-right-width:98.9vw;
-}
+
+@media only screen and (max-width: 1116px){
+    .orange-div{
+        border-right: 99vw solid var(--dark-bg);
+    }
+  }
+  
+  
 .hero-content{
     display: flex;
     flex-direction: column;
