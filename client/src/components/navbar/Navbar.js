@@ -7,7 +7,6 @@ export const Navbar = () => {
   const [toggle, settoggle] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
   const updateDimensions = () => {
-    console.log(width)
     setWidth(window.innerWidth);
   };
   useEffect(() => {
@@ -16,13 +15,13 @@ export const Navbar = () => {
   }, [window.innerWidth]);
 
   return (
-    <div className="navbar">
+    <div className="navbar-container">
       <h1>
         Sh<p>o</p>pD<p>o</p>ge
       </h1>
       <SearchBar />
       <div className="hidden-toggle">
-        <span onClick={() => settoggle(!toggle)}>Toggle Side Menu</span>
+        <span onClick={() => settoggle(!toggle)}>Toggle</span>
       </div>
       <div
         className="side-nav"

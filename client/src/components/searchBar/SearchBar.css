@@ -1,9 +1,8 @@
 .nav-input{
-    width: 400px;
-    height: 35px;
-    padding: 12px;
+    width: 33vw;
+    height: 40px;
+    padding: calc(1.5 * var(--default-padding));
     font-size:20px;
-    padding-bottom:15px;
     margin-bottom: 12px;
     border:2px solid orange;
     border-radius:30px;

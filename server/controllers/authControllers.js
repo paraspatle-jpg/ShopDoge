@@ -5,15 +5,15 @@ module.exports.signup = async (req, res) => {
   try{
   const { name, email, password } = req.body;
   const newUser = new User({ name, email, password });
-  console.log(newUser)
+  //console.log(newUser)
   await newUser.save()
-  console.log('a')
+  //console.log('a')
   const token = await newUser.generateAuthToken();
-  console.log(token)
+  //console.log(token)
   res.status(200).send({user,token});
 
   }catch(err) {
-    console.log(err)
+    //console.log(err)
     res.status(400).send({err: err});
   }
 };

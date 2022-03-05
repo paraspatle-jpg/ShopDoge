@@ -4,7 +4,7 @@ import "./Footer.css";
 export const Footer = () => {
   return (
     <div className="footer-container">
-      <div data-aos="fade-up" className="footer-flex-container">
+      <div data-aos="fade-down" className="footer-flex-container">
         <ul>
           <h4>Connect with us</h4>
           <li>Instagram</li>

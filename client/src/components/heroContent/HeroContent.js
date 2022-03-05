@@ -15,7 +15,12 @@ export const HeroContent = () => {
   }, [window.innerWidth]);
   
   useEffect(() => {
-    setStyles({ borderTop: "80vh solid orange",borderRight: `${width-18}px solid black`});
+    if(width >1116){
+    setStyles({ borderTop: "80vh solid orange",borderRight: `${window.visualViewport.width}px solid transparent`});
+    }
+    else{
+      setStyles({ borderTop: "80vh solid orange",borderRight: `${window.visualViewport.width}px solid transparent`});
+    }
   }, [width]);
 
   return (

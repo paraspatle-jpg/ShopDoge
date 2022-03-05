@@ -3,9 +3,11 @@
     float: left;
     position: absolute;
     border-top: 0 solid var(--light-bg);
-    border-right: 98.9vw solid var(--dark-bg);
+    border-right: 98.9vw solid transparent;
     z-index: -9999;
     transition: all 0.5s;
+    background-color: var(--dark-bg);
+    padding-bottom:10px;
 }
 
 @media only screen and (max-width: 1116px){
@@ -37,7 +39,7 @@
 }
 .orange>h2,.black>h2{
     text-align: center;
-    font-size:25px;
+    font-size:28px;
     width:31vw;
     padding: var(--default-padding);
 }
@@ -45,21 +47,24 @@
     color: orange;
 }
 .orange>h4{
-    font-size:17px;
+    font-size:19px;
+    padding: calc(var(--default-padding)/2);
 }
 .black>h4{
     color: var(--text-darg-bg);
-    font-size:17px;
+    font-size:19px;
+    padding: calc(var(--default-padding)/2);
 }
 .hero-link{
-    font-size:20px;
+    font-size:22px;
     text-decoration:none;
     text-align: center;
     width:160px;
     height:auto;
     background-color:var(--dark-bg);
     padding: var(--default-padding);
-    padding-bottom:calc(var(--default-padding)+var(--default-padding)/2));
+    padding-bottom:calc(var(--default-padding)*1.5));
+    margin-top:5px;
     border-radius: 30px;
     
 }
