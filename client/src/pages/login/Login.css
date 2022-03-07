@@ -8,7 +8,7 @@
 .login-form-container {
     margin:auto;
     color: var(--text-light-bg);
-    width: 600px;
+    width: 55vw;
     height:400px;
     padding:var(--default-padding);
     border-radius: 10px;

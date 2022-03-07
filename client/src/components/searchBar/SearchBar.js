@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./SearchBar.css"
+import "./SearchBar.css";
 
 export const SearchBar = () => {
-    const [hideResults, setHideResults] = useState({ display: "none" });
-    const [searchKey, setSearchKey] = useState("");
+  const [hideResults, setHideResults] = useState({ display: "none" });
+  const [searchKey, setSearchKey] = useState("");
   const dummyresults = [
     "paras",
     "tanmayee",
