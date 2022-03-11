@@ -1,0 +1,27 @@
+.nav-input{
+    width: 33vw;
+    height: 40px;
+    padding: calc(1.5 * var(--default-padding));
+    font-size:20px;
+    margin-bottom: 12px;
+    border:2px solid orange;
+    border-radius:30px;
+    transition: all 0.3s;
+  }
+  .nav-input:focus{
+    box-shadow: 0 0 0 99999px rgba(0, 0, 0, 0.5);
+    outline:2.5px solid orange;
+    transition: all 0.3s;
+  }
+  .search-results{
+    z-index: 99999;
+    background-color:white;
+    width: 40vw;
+    height:auto;
+    top:100;
+    margin-top:5px;
+    font-size:22px;
+    padding: var(--default-padding);
+    border-radius: var(--default-border-rad);
+    position:absolute;
+  }

@@ -1,0 +1,115 @@
+.navbar-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  height: 67px;
+  margin-top:10px;
+}
+.navbar-container > h1 {
+  margin-left: 12px;
+ font-size : 26px;
+  padding: 8px;
+}
+.navbar-container > .side-nav > ul {
+  display: flex;
+  list-style: none;
+}
+.navbar-container > .side-nav > ul > li {
+  margin-right: 12px;
+  padding: 8px;
+  padding-bottom: 0;
+}
+.navbar-container > .side-nav > ul > h1 {
+  display: none;
+}
+.hidden-toggle {
+  display: none;
+}
+.navbar-container > h1 > p {
+  display: inline-block;
+  color: #ff7e29;
+}
+.navbar-links {
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  color: black;
+  font-size: 20px;
+  transition: all 0.3s ease-out;
+}
+
+.navbar-links:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: orange;
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.navbar-links:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+.navbar-links:hover {
+  color: orange;
+}
+
+@media only screen and (max-width: 1116px) {
+  .navbar-container> .side-nav > ul {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: 1000;
+  }
+  .navbar-container> .side-nav {
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: black;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 1;
+    transition: height 0.3s ease;
+    z-index: 1000;
+  }
+  .navbar-links {
+    color: var(--text-darg-bg);
+    : 22px;
+    z-index: 1000;
+  }
+  .navbar-container> .side-nav > ul > li,
+  .navbar-container> .side-nav > ul > h1 {
+    margin: auto;
+    color: var(--text-darg-bg);
+    display: flex;
+    z-index: 1000;
+  }
+  .navbar-container> .side-nav > ul > h1 {
+    margin-bottom: 50px;
+    z-index: 1000;
+  }
+  .navbar-links:after {
+    background-color: var(--text-darg-bg);
+    z-index: 1000;
+  }
+  .navbar-links:hover {
+    color: var(--text-darg-bg);
+    z-index: 1000;
+  }
+  .hidden-toggle {
+    display: block;
+    z-index: 1000;
+    cursor: pointer;
+  }
+}

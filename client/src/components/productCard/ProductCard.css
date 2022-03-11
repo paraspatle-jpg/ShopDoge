@@ -1,0 +1,14 @@
+.product-card-container{
+    background: var(--light-bg);
+    border-radius: var(--default-border-rad);
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+    transition: all 0.5s;
+    margin:20px;
+}
+.product-card-container:hover{
+    width: 310px;
+    height: 330px;
+    box-shadow: 10px 10px 7px grey;
+}

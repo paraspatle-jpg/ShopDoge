@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
-import { Navbars } from "./components/navbar/Navbar"
+import React from "react";
+import { Navbar } from "./components/navbar/Navbar"
+import { Footer } from "./components/footer/Footer"
 import Homepage from "./pages/homepage/Homepage";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
@@ -8,14 +9,12 @@ import Cart from "./pages/shoppingCart/Cart";
 import PageNotFound from "./pages/pageNotFound/PageNotFound";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { UserProvider } from "./contexts/context";
 
 function App() {
 
   return (
-    <UserProvider>
       <Router>
-        <Navbars />
+        <Navbar />
         <Routes>
           <Route exact path="/" element={<Homepage />} />
           <Route exact path="/register" element={<Register />} />
@@ -24,8 +23,8 @@ function App() {
           <Route exact path="/products" element={<Products />} />
           <Route exact path="*" element={<PageNotFound />} />
         </Routes>
+        <Footer />
       </Router>
-    </UserProvider>
   );
 }
 
