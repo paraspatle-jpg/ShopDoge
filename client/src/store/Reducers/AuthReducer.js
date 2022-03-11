@@ -15,7 +15,7 @@ const initialState = {
   user: null,
 };
 
-const AuthReducer =  (state = initialState, action) => {
+const AuthReducer = (state = initialState, action) => {
   switch (action.type) {
     case USER_LOADING:
       return {
@@ -46,6 +46,6 @@ const AuthReducer =  (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
 
 export default AuthReducer;

@@ -15,6 +15,11 @@
     font-size:25px;
     padding-bottom:calc(var(--default-padding));
 }
+.footer-flex-container>hr{
+    height:0.5px;
+    color: var(--text-darg-bg);
+
+}
 .footer-container>h6{
     text-align:center;
     font-size:19px;

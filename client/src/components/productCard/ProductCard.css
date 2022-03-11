@@ -8,7 +8,8 @@
     margin:20px;
 }
 .product-card-container:hover{
-    width: 310px;
-    height: 330px;
-    box-shadow: 10px 10px 7px grey;
+    width: 350px;
+    height: 360px;
+    margin-top:-1px;
+    margin-left: -3px;
 }

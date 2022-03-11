@@ -16,8 +16,8 @@ export const ProductsDisplay = () => {
       setStylespar({height:"100vh"});
     }
     else{
-      setStyles({height:"390px"});
-      setStylespar({height:"440px"});
+      setStyles({height:"400px"});
+      setStylespar({height:"500px"});
     }
   }
   return (
