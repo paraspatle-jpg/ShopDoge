@@ -6,13 +6,12 @@ export const HeroContent = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const [styles, setStyles] = useState({});
   const updateDimensions = () => {
-    console.log(width)
     setWidth(window.innerWidth);
   };
   useEffect(() => {
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
-  }, [window.innerWidth]);
+  }, []);
   
   useEffect(() => {
     if(width >1116){
