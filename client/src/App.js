@@ -5,6 +5,7 @@ import Homepage from "./pages/homepage/Homepage";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Products from "./pages/products/Products";
+import {Product} from "./pages/product/Product";
 import Cart from "./pages/shoppingCart/Cart";
 import PageNotFound from "./pages/pageNotFound/PageNotFound";
 
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/cart" element={<Cart />} />
           <Route exact path="/products" element={<Products />} />
+          <Route exact path="/products/:id" element={<Product />} />
           <Route exact path="*" element={<PageNotFound />} />
         </Routes>
         <Footer />

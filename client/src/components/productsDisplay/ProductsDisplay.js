@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ProductCard } from "../productCard/ProductCard";
 import { fetchProducts } from "../../store/Actions/ProductAction";
+import { Loading } from "../loading/Loading";
 import "./ProductsDisplay.css";
 import { ArrowDown } from "../assets/ArrowDown";
 import { ArrowUp } from "../assets/ArrowUp";
 
 export const ProductsDisplay = () => {
-  const products = useSelector((products) => {
-    return products.product.products;
+  const products = useSelector((state) => {
+    return state.product.products;
   });
   const dispatch = useDispatch();
 
@@ -25,8 +26,8 @@ export const ProductsDisplay = () => {
   const handleClick = (e) => {
     setToggle(!toggle);
     if (toggle) {
-      setStyles({ height: "1110px" });
-      setStylespar({ height: "145vh" });
+      setStyles({ height: "1120px" });
+      setStylespar({ height: "147vh" });
     } else {
       setStyles({ height: "400px" });
       setStylespar({ height: "500px" });
@@ -37,7 +38,11 @@ export const ProductsDisplay = () => {
       <div className="product-container" style={stylespar}>
         <div className="display-products-container" style={styles}>
           {products.map((product) => {
-            return <div className="product"><ProductCard product={product}  /></div>;
+            return (
+              <div className="product">
+                <ProductCard product={product} />
+              </div>
+            );
           })}
         </div>
         <h1>
@@ -48,6 +53,6 @@ export const ProductsDisplay = () => {
       </div>
     );
   } else {
-    return null;
+    return <Loading />;
   }
 };

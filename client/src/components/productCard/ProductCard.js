@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"
 import "./ProductCard.css";
 
 export const ProductCard = (props) => {
@@ -8,10 +9,12 @@ export const ProductCard = (props) => {
         <img
           src={props.product.image}
           alt="products"
-          width="200"
-          height="200"
+          width="170"
+          height="170"
         ></img>
-        <h3>{props.product.title}</h3>
+        <Link to={`/products/${props.product.id}`} className="product-title">{props.product.title}</Link>
+        <h2>{props.product.price}$</h2>
+        
         <div className="btn-container">
           <span>Buy Now</span>
           <span>Add to Cart</span>
