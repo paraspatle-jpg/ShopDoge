@@ -48,9 +48,28 @@ module.exports.addToCart = async (req, res) => {
     }
 }
 
+
+module.exports.updateProductCount = async (req, res) => {
+    const {userId, productId, quantity} = req.params;
+
+    try{
+        let cart = await Cart.findOne({ userId });
+        const index = cart.items.findIndex(p => p.productId == productId)
+        if(index > -1){
+            cart.quantity = quantity
+        }
+        cart = await cart.save()
+        res.status(201).send({msg:"Updated Successfully"})
+
+    }catch(err) {
+        console.log(err)
+        res.status(500).send("Something went wrong");
+    }
+}
+
+
 module.exports.deleteFromCart= async (req, res) => {
-    const userId = req.params.userId
-    const productId = req.params.productId
+    const {userId, productId} = req.params;
 
     try {
         let cart = await Cart.findOne({ userId });

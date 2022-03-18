@@ -1,0 +1,7 @@
+.cart-products-container{
+    border: 1px solid var(--text-darg-bg);
+    color: var(--text-darg-bg);
+}
+.cart-products-flex-container{
+    display: flex;
+}
