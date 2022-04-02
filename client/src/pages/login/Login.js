@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { login } from "../../store/Actions/AuthAction";
 import "./Login.css";
 
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
+  const dispatch = useDispatch();
+
   const handleChange = (e) => {
     e.preventDefault();
     setUser((prevState) => {
@@ -13,6 +17,11 @@ const Login = () => {
       };
     });
   };
+
+  const handleClick = () => {
+    dispatch(login());
+  }
+
   return (
     <>
       <div className="login-container">
@@ -32,7 +41,7 @@ const Login = () => {
             name="password"
             type="password"
           />
-          <span data-aos="fade-down">Submit</span>
+          <span onClick = {handleClick} data-aos="fade-down" >Submit</span>
         </div>
       </div>
     </>
