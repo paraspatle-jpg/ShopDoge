@@ -19,7 +19,7 @@ const Login = () => {
   };
 
   const handleClick = () => {
-    dispatch(login());
+    dispatch(login(user));
   }
 
   return (

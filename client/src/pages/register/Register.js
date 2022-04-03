@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { register } from "../../store/Actions/AuthAction";
 import "./Register.css";
 
 const Register = () => {
-  const [user, setUser] = useState({ username: "", email: "", password: "" });
+  const [user, setUser] = useState({ name: "", email: "", password: "" });
+  const dispatch = useDispatch();
+
   const handleChange = (e) => {
     e.preventDefault();
     setUser((prevState) => {
@@ -13,6 +17,11 @@ const Register = () => {
       };
     });
   };
+
+  const handleClick = () => {
+    dispatch(register(user));
+  }
+
   return (
     <>
       <div className="signup-container">
@@ -39,7 +48,7 @@ const Register = () => {
             placeholder="Password"
             type="text"
           />
-          <span data-aos="fade-down">Submit</span>
+          <span data-aos="fade-down" onClick={handleClick}>Submit</span>
         </div>
       </div>
     </>

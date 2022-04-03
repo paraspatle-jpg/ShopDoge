@@ -21,12 +21,12 @@ module.exports.signup = async (req, res) => {
 module.exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
-
+    console.log(req.body)
     const user = await User.getCredentials(email, password);
     const token = await user.generateAuthToken();
     return res.status(200).json({ user, token });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json("Something went wrong");
   }
 };
 
