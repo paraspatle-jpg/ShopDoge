@@ -1,4 +1,5 @@
 .shopping-cart-container{
     background:var(--dark-bg);
+    padding-top:60px;
     min-height:80vh;
 }

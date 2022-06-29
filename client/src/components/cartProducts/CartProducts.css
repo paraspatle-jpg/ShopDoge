@@ -1,7 +1,14 @@
 .cart-products-container{
-    border: 1px solid var(--text-darg-bg);
+    border: 3px solid var(--text-darg-bg);
     color: var(--text-darg-bg);
+    min-height: 50vh;
+    margin:auto;
+    width:60%;
+    padding-top: 5px;
 }
 .cart-products-flex-container{
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex:2;
 }

@@ -12,7 +12,9 @@ export const register =
     };
     //request body
     const body = JSON.stringify({ name, email, password });
-
+    dispatch({
+      type: ActionTypes.USER_LOADING,
+    })
     shopDogeApi
       .post("api/register", body, config)
       .then((res) =>
@@ -39,7 +41,9 @@ export const login =
     };
     //request body
     const body = JSON.stringify({ email, password });
-
+    dispatch({
+      type: ActionTypes.USER_LOADING,
+    })
     shopDogeApi
       .post("api/login", body, config)
       .then((res) => {

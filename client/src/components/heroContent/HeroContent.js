@@ -40,7 +40,7 @@ export const HeroContent = () => {
           <h4>SignIn for best experience</h4>
           <h4>Recieve delivery within 2-3 days</h4>
           <h4>Pay after you recieve</h4>
-          <Link to="/products" className="hero-link">
+          <Link to="/login" className="hero-link">
             SignIn
           </Link>
         </div>

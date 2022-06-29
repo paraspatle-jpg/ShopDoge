@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../store/Actions/AuthAction";
 import "./Login.css";
@@ -17,6 +17,8 @@ const Login = () => {
       };
     });
   };
+
+  const userState = useSelector((state) => state.auth)
 
   const handleClick = () => {
     dispatch(login(user));
@@ -41,7 +43,7 @@ const Login = () => {
             name="password"
             type="password"
           />
-          <span onClick = {handleClick} data-aos="fade-down" >Submit</span>
+          <span onClick = {handleClick} data-aos="fade-down" >{userState.isLoading?"Loading":"Submit"}</span>
         </div>
       </div>
     </>
