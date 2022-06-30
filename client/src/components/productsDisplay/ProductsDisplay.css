@@ -1,5 +1,5 @@
 .product-container{
-  height:440px;
+  height:500px;
   transition: all 0.3s;
 }
 
@@ -9,7 +9,7 @@
   justify-content: space-evenly;
   background: var(--dark-bg);
   padding: calc(3 * var(--default-padding));
-  height: 360px;
+  height: 400px;
   overflow: hidden;
   transition: all 0.3s;
 }
@@ -37,9 +37,4 @@
 .product-container > h1 > span > svg {
   width: 52px;
   height: 52px;
-}
-.product-container > h1 > span:hover{
-  box-shadow: 5px 5px 2px grey;
-  width:62px;
-  height:62px;
 }

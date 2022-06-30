@@ -48,13 +48,13 @@ UserSchema.methods.toJSON = function(){
 
 //a function to check login and return user
 UserSchema.statics.getCredentials = async (email, password) => {
-    const user = await User.findOne({ email })
+    const user = await User.findOne({ email });
     if(!user){
-        res.status(403).send({msg:'Login Failed'})
+        res.status(403).send({msg:'Login Failed'});
     }
-    const isPassValid = await bcrypt.compare(password, user.password)
+    const isPassValid = await bcrypt.compare(password, user.password);
     if(!isPassValid){
-        res.status(403).send({msg:'Login Failed'})
+        res.status(403).send({msg:'Login Failed'});
     }
 
     return user

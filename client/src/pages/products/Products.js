@@ -1,17 +1,37 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { ProductCard } from "../../components/productCard/ProductCard";
+import { fetchProducts } from "../../store/Actions/ProductAction";
+import { Loading } from "../../components/loading/Loading";
+import "./Products.css";
 
 const Products = () => {
-  const [num, setNum] = useState(6);
-  const handleClick = () => {
-    const temp = num + 5;
-    setNum(temp);
-  }
+  const products = useSelector((state) => {
+    return state.product.products;
+  });
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
+  console.log(products);
   return (
-    <>
-      
-    </>
+    <div className="product-page-container">
+      {products !== undefined ? (
+        <div className="product-page-flex-container">
+          {products.map((product) => {
+            return (
+              <div className="product">
+                <ProductCard product={product} />
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <Loading />
+      )}
+    </div>
   );
 };
 export default Products;

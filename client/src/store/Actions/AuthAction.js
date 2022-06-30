@@ -1,28 +1,61 @@
-import axios from 'axios';
-import { returnErrors } from './errorActions';
-import { USER_LOADING, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, REGISTER_SUCCESS, REGISTER_FAIL} from './types';
+import shopDogeApi from "../../apis/shopDogeApi";
+import { ActionTypes } from "../Types";
 
-
-export const login = ({email, password}) => dispatch => {
+export const register =
+  ({ name, email, password }) =>
+  (dispatch) => {
     // headers
     const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }
-
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
     //request body
-    const body = JSON.stringify({email, password});
-
-    axios.post('/api/login',body,config)
-        .then(res => dispatch({
-            type: LOGIN_SUCCESS,
-            payload: res.data
-        }))
-        .catch(err => {
-            dispatch(returnErrors(err.response.data, err.response.status, 'LOGIN_FAIL'));
-            dispatch({
-                type: LOGIN_FAIL
-            });
+    const body = JSON.stringify({ name, email, password });
+    dispatch({
+      type: ActionTypes.USER_LOADING,
+    })
+    shopDogeApi
+      .post("api/register", body, config)
+      .then((res) =>
+        dispatch({
+          type: ActionTypes.REGISTER_SUCCESS,
+          payload: res.data,
+        })
+      )
+      .catch((err) => {
+        dispatch({
+          type: ActionTypes.REGISTER_FAIL,
         });
-}
+      });
+  };
+
+export const login =
+  ({ email, password }) =>
+  (dispatch) => {
+    // headers
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    //request body
+    const body = JSON.stringify({ email, password });
+    dispatch({
+      type: ActionTypes.USER_LOADING,
+    })
+    shopDogeApi
+      .post("api/login", body, config)
+      .then((res) => {
+          console.log(res.data)
+        dispatch({
+          type: ActionTypes.LOGIN_SUCCESS,
+          payload: res.data,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: ActionTypes.LOGIN_FAIL,
+        });
+      });
+  };
