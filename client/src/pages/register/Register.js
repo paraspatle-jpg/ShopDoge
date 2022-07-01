@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { register } from "../../store/Actions/AuthAction";
+import { SmallLoading } from "../../components/loading/SmallLoading";
 import "./Register.css";
 
 const Register = () => {
   const [user, setUser] = useState({ name: "", email: "", password: "" });
   const dispatch = useDispatch();
+
+  const userState = useSelector((state) => state.auth);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -20,7 +23,7 @@ const Register = () => {
 
   const handleClick = () => {
     dispatch(register(user));
-  }
+  };
 
   return (
     <>
@@ -29,7 +32,7 @@ const Register = () => {
           <h1 className="heading-signup">Sign Up</h1>
           <input
             onChange={handleChange}
-            name="username"
+            name="name"
             data-aos="fade-left"
             placeholder=" &#xF199; Username"
             type="text"
@@ -48,7 +51,9 @@ const Register = () => {
             placeholder="Password"
             type="text"
           />
-          <span data-aos="fade-down" onClick={handleClick}>Submit</span>
+          <span data-aos="fade-down" onClick={handleClick}>
+            {userState.isLoading ? <SmallLoading /> : "Submit"}
+          </span>
         </div>
       </div>
     </>

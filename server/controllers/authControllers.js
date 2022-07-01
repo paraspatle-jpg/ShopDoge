@@ -24,9 +24,10 @@ module.exports.login = async (req, res) => {
     console.log(req.body)
     const user = await User.getCredentials(email, password);
     const token = await user.generateAuthToken();
-    return res.status(200).json({ user, token });
+     res.status(200).send({ user, token });
   } catch (err) {
-    res.status(400).json("Something went wrong");
+    console.log(err)
+    res.status(400).json(err);
   }
 };
 

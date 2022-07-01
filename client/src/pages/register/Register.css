@@ -54,7 +54,3 @@
     cursor:pointer;
     transition:all 0.3s;
 }
-.signup-form-container>span:hover{
-    background:var(--text-darg-bg);
-    color:var(--text-light-bg);
-}
