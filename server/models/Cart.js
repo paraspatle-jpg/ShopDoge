@@ -11,15 +11,6 @@ const CartSchema = new Schema({
             type: Number,
             ref: "item"
         },
-        url: {
-            type: String,
-        },
-        price: {
-            type: Number,
-        },
-        description: {
-            type: String,
-        },
         quantity: {
             type: Number,
             required: true,

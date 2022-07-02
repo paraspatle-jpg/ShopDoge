@@ -23,7 +23,7 @@ export const CartReducer = (state = initialState, action) => {
       };
     case ActionTypes.FETCH_CART_FAIL:
       return {
-        cart: [],
+        cart: null,
         isLoading: false,
         isError: true,
       };

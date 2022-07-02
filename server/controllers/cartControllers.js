@@ -17,7 +17,7 @@ module.exports.getCart = async (req, res) => {
 
 module.exports.addToCart = async (req, res) => {
   const userId = req.user._id;
-  const productId = req.body.product.id;
+  const productId = req.body.productID;
   try {
     let cart = await Cart.findOne({ userId });
     if (cart) {

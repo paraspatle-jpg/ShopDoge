@@ -16,7 +16,7 @@ export const register =
       type: ActionTypes.USER_LOADING,
     })
     shopDogeApi
-      .post("api/register", body, config)
+      .post("/register", body, config)
       .then((res) =>
         dispatch({
           type: ActionTypes.REGISTER_SUCCESS,
@@ -45,7 +45,7 @@ export const login =
       type: ActionTypes.USER_LOADING,
     })
     shopDogeApi
-      .post("api/login", body, config)
+      .post("/login", body, config)
       .then((res) => {
           console.log(res.data)
         dispatch({

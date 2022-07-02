@@ -2,46 +2,53 @@ import shopDogeApi from "../../apis/shopDogeApi";
 import { ActionTypes } from "../Types";
 
 export const getCart = () => (dispatch) => {
-  dispatch({ types: ActionTypes.CART_LOADING });
+  dispatch({ type: ActionTypes.CART_LOADING });
   shopDogeApi
     .get("/cart")
     .then((response) => {
+      console.log(response);
       dispatch({
-        types: ActionTypes.FETCH_CART_SUCCESS,
+        type: ActionTypes.FETCH_CART_SUCCESS,
         payload: response.data,
       });
     })
     .catch((error) => {
-      dispatch({ types: ActionTypes.FETCH_CART_FAIL });
+      dispatch({ type: ActionTypes.FETCH_CART_FAIL });
     });
 };
 
-export const addToCart = () => (dispatch) => {
+export const addToCart = (productID) => (dispatch) => {
+  const body = {
+    productID: productID,
+    headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+  };
   shopDogeApi
-    .post("/cart")
+    .post("/cart", body)
     .then((response) => {
       dispatch({
-        types: ActionTypes.ADD_PRODUCT_SUCCESS,
+        type: ActionTypes.ADD_PRODUCT_SUCCESS,
         payload: response.data,
       });
     })
     .catch((error) => {
-      dispatch({ types: ActionTypes.ADD_PRODUCT_FAIL });
+      dispatch({ type: ActionTypes.ADD_PRODUCT_FAIL });
     });
 };
+
 export const deleteFromCart = () => (dispatch) => {
   shopDogeApi
     .delete("/cart")
     .then((response) => {
       dispatch({
-        types: ActionTypes.DELETE_PRODUCT_SUCCESS,
+        type: ActionTypes.DELETE_PRODUCT_SUCCESS,
         payload: response.data,
       });
     })
     .catch((error) => {
-      dispatch({ types: ActionTypes.DELETE_PRODUCT_FAIL });
+      dispatch({ type: ActionTypes.DELETE_PRODUCT_FAIL });
     });
 };
+
 export const updateCount = () => (dispatch) => {
   shopDogeApi
     .put("/cart")

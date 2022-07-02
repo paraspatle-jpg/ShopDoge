@@ -12,8 +12,8 @@ export const CartProducts = () => {
     { name: "Tshirt", quantity: 3 },
   ];
 
-  const updateCount = (count) => {};
-  const deleteFromCart = () => {};
+  const updateCount = (count) => {console.log(count);};
+  const deleteFromCart = () => {console.log("delete from cart")};
 
   return (
     <div className="cart-products-container">
@@ -25,16 +25,16 @@ export const CartProducts = () => {
             <div className="cart-product-flex-container">
               <span>{product.name}</span>
               <span>
-                <span className="cart-update-svg" onClick={updateCount(-1)}>
+                <span className="cart-update-svg" onClick={()=>{updateCount(-1)}}>
                   <Decrease></Decrease>
                 </span>
                 <span className="cart-count-text">{product.quantity}</span>
-                <span className="cart-update-svg" onClick={updateCount(1)}>
+                <span className="cart-update-svg" onClick={()=>{updateCount(1)}}>
                   <Increase></Increase>
                 </span>
                 <span
                   className="cart-update-svg cart-delete-svg"
-                  onClick={deleteFromCart(1)}
+                  onClick={deleteFromCart}
                 >
                   <Delete></Delete>
                 </span>
