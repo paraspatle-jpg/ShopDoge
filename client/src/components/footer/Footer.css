@@ -25,3 +25,12 @@
     font-size:19px;
     padding:var(--default-padding);
 }
+@media only screen and (max-width: 800px){
+    .footer-container>h6{
+        font-size:16px;
+    }
+    .footer-flex-container>ul>h4{
+        font-size:19px;
+        font-weight:bold;
+    }
+}

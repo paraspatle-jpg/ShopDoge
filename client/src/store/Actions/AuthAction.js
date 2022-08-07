@@ -14,7 +14,7 @@ export const register =
     const body = JSON.stringify({ name, email, password });
     dispatch({
       type: ActionTypes.USER_LOADING,
-    })
+    });
     shopDogeApi
       .post("/register", body, config)
       .then((res) =>
@@ -43,11 +43,12 @@ export const login =
     const body = JSON.stringify({ email, password });
     dispatch({
       type: ActionTypes.USER_LOADING,
-    })
+    });
     shopDogeApi
       .post("/login", body, config)
       .then((res) => {
-          console.log(res.data)
+        console.log(res.data);
+        
         dispatch({
           type: ActionTypes.LOGIN_SUCCESS,
           payload: res.data,

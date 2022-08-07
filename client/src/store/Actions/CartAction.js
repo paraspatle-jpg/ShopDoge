@@ -3,8 +3,11 @@ import { ActionTypes } from "../Types";
 
 export const getCart = () => (dispatch) => {
   dispatch({ type: ActionTypes.CART_LOADING });
+  const body = {
+    header: { Authorization: "Bearer " + localStorage.getItem("token") },
+  };
   shopDogeApi
-    .get("/cart")
+    .get("/cart", body)
     .then((response) => {
       console.log(response);
       dispatch({
@@ -20,11 +23,12 @@ export const getCart = () => (dispatch) => {
 export const addToCart = (productID) => (dispatch) => {
   const body = {
     productID: productID,
-    headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+    header: { Authorization: "Bearer " + localStorage.getItem("token") },
   };
   shopDogeApi
     .post("/cart", body)
     .then((response) => {
+      if (response.status >= 400) throw new Error(response.data.msg);
       dispatch({
         type: ActionTypes.ADD_PRODUCT_SUCCESS,
         payload: response.data,

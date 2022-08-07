@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { SearchBar } from "../searchBar/SearchBar";
 import "./Navbar.css";
@@ -14,6 +15,10 @@ export const Navbar = () => {
     return () => window.removeEventListener("resize", updateDimensions);
   }, [window.innerWidth]);
 
+  const authDetails = useSelector((state) => {
+    return state.auth;
+  });
+
   return (
     <div className="navbar-container">
       <h1>
@@ -25,7 +30,11 @@ export const Navbar = () => {
       </div>
       <div
         className="side-nav"
-        style={!toggle && width <= 1116 ? { height:'0', opacity: "0" } : { height:'100%', opacity: "1" }}
+        style={
+          !toggle && width <= 1116
+            ? { height: "0", opacity: "0" }
+            : { height: "100%", opacity: "1" }
+        }
       >
         <ul>
           <h1>ShopDoge</h1>
@@ -44,16 +53,31 @@ export const Navbar = () => {
               Shopping Cart
             </Link>
           </li>
-          <li>
-            <Link to="/login" className="navbar-links">
-              Login
-            </Link>
-          </li>
-          <li>
-            <Link to="/register" className="navbar-links">
-              Signup
-            </Link>
-          </li>
+          {!authDetails.isAuthenticated ? (
+            <>
+              <li>
+                <Link to="/login" className="navbar-links">
+                  Login
+                </Link>
+              </li>
+              <li>
+                <Link to="/register" className="navbar-links">
+                  Signup
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                {" "}
+                <p className="navbar-links">Hello, {authDetails.user.name}</p>
+              </li>
+              <li>
+                {" "}
+                <p className="navbar-links">Logout</p>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </div>

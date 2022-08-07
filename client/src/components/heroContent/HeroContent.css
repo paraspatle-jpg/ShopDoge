@@ -75,3 +75,30 @@
     color:black;
     background-color:orange;
 }
+
+@media only screen and (max-width: 850px) {
+.orange>h2,.black>h2{
+    font-size:21px;
+    font-weight:bold;
+}
+.hero-link{
+    font-size:20px;
+    width:150px;
+    margin-top:7px;
+    font-weight:bold;
+}
+.orange>h4,.black>h4{
+    font-size:18px;
+}
+}
+
+@media only screen and (max-width: 700px){
+    .orange{
+        width: 60vw;
+        margin-left:5vw;
+    }
+    .black{
+        /* align-self: flex-end; */
+        margin-right: 8vw;
+    }
+}

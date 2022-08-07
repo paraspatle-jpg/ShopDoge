@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../store/Actions/AuthAction";
 import "./Login.css";
@@ -22,6 +23,10 @@ const Login = () => {
 
   const handleClick = () => {
     dispatch(login(user));
+  }
+
+  if(userState.isAuthenticated){
+    return <Navigate to="/"></Navigate>
   }
 
   return (

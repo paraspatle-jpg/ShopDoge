@@ -2,9 +2,9 @@ import { ActionTypes } from '../Types'
 
 const initialState = {
   token: localStorage.getItem("token"),
-  isAuthenticated: null,
+  isAuthenticated: localStorage.getItem("token")?true:false,
   isLoading: false,
-  user: null,
+  user: JSON.parse(localStorage.getItem("user")),
 };
 
 const AuthReducer = (state = initialState, action) => {
@@ -17,6 +17,8 @@ const AuthReducer = (state = initialState, action) => {
     case ActionTypes.LOGIN_SUCCESS:
     case ActionTypes.REGISTER_SUCCESS:
       localStorage.setItem("token", action.payload.token);
+      console.log(action.payload.user);
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
       return {
         ...state,
         ...action.payload,

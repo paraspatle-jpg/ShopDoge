@@ -15,19 +15,11 @@ export const Footer = () => {
           <li>Instagram</li>
           <li>Youtube</li>
         </ul>
-        <ul>
-          <h4>Connect with us</h4>
-          <li>Instagram</li>
-          <li>Youtube</li>
-        </ul>
-        <ul>
-          <h4>Connect with us</h4>
-          <li>Instagram</li>
-          <li>Youtube</li>
-        </ul>
+
       </div>
       <hr></hr>
       <h6 className="">The doge supremacy</h6>
     </div>
   );
 };
+

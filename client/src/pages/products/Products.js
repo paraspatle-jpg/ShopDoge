@@ -13,9 +13,9 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, []);
+  }, [dispatch]);
 
-  console.log(products);
+  // console.log(products);
   return (
     <div className="product-page-container">
       {products !== undefined ? (
